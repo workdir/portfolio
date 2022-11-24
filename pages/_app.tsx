@@ -1,14 +1,18 @@
 import type { AppProps } from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
-import { theme } from "../styles/theme";
+import { AnimatePresence } from "framer-motion";
 import Layout from "../layout/main";
+import Chakra from "../components/Chakra";
+import Fonts from "../components/Fonts";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
     return (
-        <ChakraProvider theme={theme}>
+        <Chakra cookies={pageProps.cookies}>
+            <Fonts />
             <Layout>
-                <Component {...pageProps} />
+                <AnimatePresence exitBeforeEnter initial={false}>
+                    <Component {...pageProps} key={router.route} />
+                </AnimatePresence>
             </Layout>
-        </ChakraProvider>
+        </Chakra>
     );
 }

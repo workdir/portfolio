@@ -6,6 +6,7 @@ export const ToggleThemeBtn = () => {
     const icon = colorMode === "dark" ? <SunIcon /> : <MoonIcon />;
     return (
         <IconButton
+            rounded="full"
             aria-label="theme toggler"
             icon={icon}
             onClick={toggleColorMode}
