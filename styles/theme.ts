@@ -12,6 +12,9 @@ const components = {
             "section-title": {
                 fontSize: 20,
             },
+            article: {
+                fontSize: "26px",
+            },
         },
     },
 };
@@ -19,13 +22,15 @@ const components = {
 const styles = {
     global: (props: StyleFunctionProps) => ({
         body: {
-            bg: mode("green.200", "blue.900")(props),
+            bg: mode("#ffffff", "gray.800")(props),
+            color: mode("#000000", "#ffffff")(props),
         },
     }),
 };
 
 const fonts = {
-    body: "'Anek Gurmukhi', sans-serif;",
+    body: "'Quicksand', sans-serif",
+    heading: "'Quicksand', sans-serif",
 };
 
 const theme = extendTheme({ config, components, styles, fonts });

@@ -19,6 +19,7 @@ const Section = ({ children, delay = 0 }: Props) => {
                 delay,
             }}
             my={6}
+            as={"section"}
         >
             {children}
         </Motiondiv>

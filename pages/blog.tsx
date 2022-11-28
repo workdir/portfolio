@@ -1,21 +1,6 @@
-import Layout from "../layout/article";
-import Section from "../components/Section";
-import { Heading } from "@chakra-ui/react";
-
 const Blog = () => {
-    return (
-        <Layout title="Projects">
-            <Section delay={0.3}>
-                <Heading variant="section-title">Blog</Heading>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quas doloribus tenetur porro vitae ut neque, quaerat,
-                    repudiandae, doloremque et animi debitis reprehenderit ipsum
-                    excepturi expedita voluptatibus quod! Aut, aperiam velit?
-                </p>
-            </Section>
-        </Layout>
-    );
+    return <div>Blog</div>;
 };
 
+export { getServerSiteProps } from "../components/chakra";
 export default Blog;
