@@ -11,7 +11,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const Chakra = ({ cookies, children }: Props) => {
+export const Chakra = ({ cookies, children }: Props) => {
     const colorModeManager =
         typeof cookies === "string"
             ? cookieStorageManagerSSR(cookies)
@@ -31,5 +31,3 @@ export const getServerSiteProps: GetServerSideProps = async ({ req }) => {
         },
     };
 };
-
-export default Chakra;

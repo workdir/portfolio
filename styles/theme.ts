@@ -10,10 +10,11 @@ const components = {
     Heading: {
         variants: {
             "section-title": {
-                fontSize: 20,
+                fontSize: 32,
+                mb: 4,
             },
-            article: {
-                fontSize: "26px",
+            "post-preview": {
+                fontSize: 22,
             },
         },
     },
@@ -23,7 +24,7 @@ const styles = {
     global: (props: StyleFunctionProps) => ({
         body: {
             bg: mode("#ffffff", "gray.800")(props),
-            color: mode("#000000", "#ffffff")(props),
+            color: mode("#242424", "#fafafa")(props),
         },
     }),
 };

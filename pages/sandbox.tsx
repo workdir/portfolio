@@ -1,6 +1,6 @@
-const Sandbox = () => {
-    return <div>Sandbox</div>;
-};
+import { Container } from "@chakra-ui/react";
+import { PageWrapper } from "../components/page-wrapper";
 
-export { getServerSiteProps } from "../components/chakra";
-export default Sandbox;
+export default function Sandbox() {
+    return <PageWrapper>Sandbox</PageWrapper>;
+}

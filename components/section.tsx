@@ -9,7 +9,7 @@ interface Props {
     delay: number;
 }
 
-const Section = ({ children, delay = 0 }: Props) => {
+export const Section = ({ children, delay = 0 }: Props) => {
     return (
         <Motiondiv
             initial={{ y: 10, opacity: 0 }}
@@ -25,5 +25,3 @@ const Section = ({ children, delay = 0 }: Props) => {
         </Motiondiv>
     );
 };
-
-export default Section;

@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import Head from "next/head";
 
 interface Props {
     children: React.ReactNode;
-    title: string;
 }
 
 const variants = {
@@ -12,10 +10,9 @@ const variants = {
     exit: { opacity: 0, x: -0, y: 20 },
 };
 
-const Layout = ({ children, title }: Props) => {
-    const t = `${title} - Oliver Lacek`;
+export const PageWrapper = ({ children }: Props) => {
     return (
-        <motion.article
+        <motion.div
             initial="hidden"
             animate="enter"
             exit="exit"
@@ -23,17 +20,7 @@ const Layout = ({ children, title }: Props) => {
             transition={{ duration: 0.4, type: "easeInOut" }}
             style={{ position: "relative" }}
         >
-            <>
-                {title && (
-                    <Head>
-                        <title>{t}</title>
-                        <meta property="og:title" content={t} />
-                    </Head>
-                )}
-                {children}
-            </>
-        </motion.article>
+            {children}
+        </motion.div>
     );
 };
-
-export default Layout;

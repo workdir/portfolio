@@ -1,5 +1,5 @@
 import type { Route } from "./types/route";
-import Link from "next/link";
+import NextLink from "next/link";
 import {
     Menu,
     MenuButton,
@@ -7,7 +7,6 @@ import {
     MenuItem,
     IconButton,
     Box,
-    Link as ChakraLink,
     type BoxProps,
 } from "@chakra-ui/react";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
@@ -16,12 +15,12 @@ interface Props extends BoxProps {
     routes: Route[];
 }
 
-const MobileMenu = ({ routes, ...props }: Props) => {
+export const MobileMenu = ({ routes, ...props }: Props) => {
     const items = routes.map((route) => {
         return (
-            <Link key={route.slug} href={route.slug}>
-                <MenuItem key={route.slug}>{route.text}</MenuItem>
-            </Link>
+            <NextLink key={route.slug} href={route.slug}>
+                <MenuItem key={route.slug}>{route.label}</MenuItem>
+            </NextLink>
         );
     });
     return (
@@ -43,5 +42,3 @@ const MobileMenu = ({ routes, ...props }: Props) => {
         </Box>
     );
 };
-
-export default MobileMenu;

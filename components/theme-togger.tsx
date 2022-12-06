@@ -14,5 +14,3 @@ export const ThemeToggler = () => {
         />
     );
 };
-
-export default ThemeToggler;

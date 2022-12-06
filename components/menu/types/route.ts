@@ -1,5 +1,5 @@
 export type Route = {
     slug: string;
-    text: string;
+    label: string;
     icon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 };

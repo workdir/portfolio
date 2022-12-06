@@ -1,8 +1,8 @@
-import { Quicksand as Font } from "@next/font/google";
+import { Quicksand } from "@next/font/google";
 
-const font = Font({
+const quicksand = Quicksand({
     subsets: ["latin"],
-    weight: ["400", "500"],
+    weight: ["400", "500", "600"],
 });
 
 const Fonts = () => {
@@ -10,7 +10,7 @@ const Fonts = () => {
         <>
             <style jsx global>{`
                 html {
-                    font-family: ${font.style.fontFamily};
+                    font-family: ${quicksand.style.fontFamily};
                 }
             `}</style>
         </>

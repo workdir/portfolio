@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import type { Route } from "./types/route";
-import Link from "next/link";
+import NextLink from "next/link";
 import { Stack, Box, Button, type StackProps } from "@chakra-ui/react";
 
 interface Props extends StackProps {
@@ -15,21 +15,21 @@ const MenuItem = (route: Route) => {
 
     return (
         <Box as={"li"} key={route.slug}>
-            <Link href={route.slug}>
+            <NextLink href={route.slug}>
                 <Button
                     //              bg={activeBackground}
                     color={activeColor}
                     leftIcon={route.icon}
                     variant={"ghost"}
                 >
-                    {route.text}
+                    {route.label}
                 </Button>
-            </Link>
+            </NextLink>
         </Box>
     );
 };
 
-const DesktopMenu = ({ routes, ...props }: Props) => {
+export const DesktopMenu = ({ routes, ...props }: Props) => {
     const items = routes.map((props) => (
         <MenuItem key={props.slug} {...props} />
     ));
@@ -45,4 +45,3 @@ const DesktopMenu = ({ routes, ...props }: Props) => {
         </Stack>
     );
 };
-export default DesktopMenu;

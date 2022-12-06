@@ -1,33 +1,33 @@
 import { Container, Stack } from "@chakra-ui/react";
 
 /** custom */
-import DesktopMenu from "./desktop-menu";
-import ThemeToggler from "../theme-togger";
+import { DesktopMenu } from "./desktop-menu";
+import { MobileMenu } from "./mobile-menu";
+import { ThemeToggler } from "../theme-togger";
 
 /** icons */
 
 import { RocketIcon, KeyboardIcon, SlashIcon } from "@radix-ui/react-icons";
-import MobileMenu from "./mobile-menu";
 
 const routes = [
     {
         slug: "/",
-        text: "Home.",
+        label: "Home.",
         icon: <SlashIcon />,
     },
     {
         slug: "/blog",
-        text: "Blog.",
+        label: "Blog.",
         icon: <KeyboardIcon />,
     },
     {
         slug: "/sandbox",
-        text: "Sandbox.",
+        label: "Sandbox.",
         icon: <RocketIcon />,
     },
 ];
 
-const Menu = () => {
+export default function Menu() {
     return (
         <header>
             <Container>
@@ -52,6 +52,4 @@ const Menu = () => {
             </Container>
         </header>
     );
-};
-
-export default Menu;
+}
