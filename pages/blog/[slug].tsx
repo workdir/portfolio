@@ -1,30 +1,28 @@
+import type { Post } from "../../lib/post";
 import type { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
+import { MDXComponents } from "../../components/mdx-components";
+import { mdxToHtml } from "../../lib/mdx";
 
 import { getSlugs, getPostBySlug } from "../../lib/post";
 
 import { Container } from "@chakra-ui/react";
-import { MDXComponents } from "../../components/mdx-components";
 import { PageWrapper } from "../../components/page-wrapper";
 
-interface Props {
-    mdxSource: MDXRemoteSerializeResult;
+interface Props extends Omit<Post, "content"> {
+    content: MDXRemoteSerializeResult;
 }
 
-const Post = ({ mdxSource }: Props) => {
+const Post = ({ content, title }: Props) => {
     return (
         <>
-            <Head>
-                {mdxSource.frontmatter?.title && (
-                    <title>{mdxSource.frontmatter.title}</title>
-                )}
-            </Head>
+            <Head>{title}</Head>
+            <link href="themes/prism-ghcolors.css" rel="stylesheet" />
             <PageWrapper>
                 <Container>
-                    <MDXRemote {...mdxSource} components={MDXComponents} />
+                    <MDXRemote {...content} components={MDXComponents} />
                 </Container>
             </PageWrapper>
         </>
@@ -37,18 +35,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const source = getPostBySlug(params?.slug as string);
+    const post = getPostBySlug(params?.slug as string);
 
-    if (!source) {
+    if (!post) {
         return {
             notFound: true,
         };
     }
 
-    const mdxSource = await serialize(source, { parseFrontmatter: true });
+    const { html, ...rest } = await mdxToHtml(post.content);
+
     return {
         props: {
-            mdxSource,
+            ...post,
+            ...rest,
+            content: html,
         },
     };
 };

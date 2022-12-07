@@ -1,11 +1,14 @@
+import { type Post } from "../lib/post";
 import NextLink from "next/link";
 import { Stack, Box, Heading, Text } from "@chakra-ui/react";
 
-interface Props {}
+interface Props {
+    post: Omit<Post, "content">;
+}
 
-export const PostPreview = () => {
+export const PostPreview = ({ post }: Props) => {
     return (
-        <NextLink href="/blog">
+        <NextLink href={`/blog/${post.slug}`}>
             <Stack
                 as={"article"}
                 spacing={4}
@@ -19,14 +22,11 @@ export const PostPreview = () => {
             >
                 <Box>
                     <Heading variant={"post-preview"} mb={1}>
-                        New Year, New beginnings: Smashing Workshops & Audits
+                        {post.title}
                     </Heading>
-                    <Text>18 April 2021</Text>
+                    <Text>{post.date}</Text>
                 </Box>
-                <Text>
-                    How to trun 256 bits of entropy into a beautiflu,
-                    avatar-rriendly circular SVG: the Hashvatar
-                </Text>
+                <Text>{post.excerpt}</Text>
             </Stack>
         </NextLink>
     );

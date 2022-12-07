@@ -1,22 +1,20 @@
-import { type GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 import NextLink from "next/link";
 import { Container } from "@chakra-ui/react";
 import { PageWrapper } from "../../components/page-wrapper";
+import { getPosts, type Post } from "../../lib/post";
+import { PostPreview } from "../../components/post-preview";
 
 interface Props {
-    slugs: string[];
+    posts: Omit<Post, "content">[];
 }
-
-export default function Blog({ slugs }: Props) {
-    const formatTitle = (slug: string) => slug.replace("-", " ");
-
+export default function Blog({ posts }: Props) {
     return (
         <PageWrapper>
             <Container>
-                {slugs.map((slug) => (
-                    <NextLink key={slug} href={`/blog/${slug}`}>
-                        {formatTitle(slug)}
-                    </NextLink>
+                <h1>App Posts</h1>
+                {posts.map((post) => (
+                    <PostPreview key={post.slug} post={post} />
                 ))}
             </Container>
         </PageWrapper>
@@ -24,5 +22,6 @@ export default function Blog({ slugs }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    return { props: {} };
+    const posts = getPosts();
+    return { props: { posts } };
 };

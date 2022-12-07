@@ -1,5 +1,5 @@
 import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
+import { mode, type StyleFunctionProps } from "@chakra-ui/theme-tools";
 
 const config: ThemeConfig = {
     initialColorMode: "dark",
@@ -34,6 +34,4 @@ const fonts = {
     heading: "'Quicksand', sans-serif",
 };
 
-const theme = extendTheme({ config, components, styles, fonts });
-
-export default theme;
+export const theme = extendTheme({ config, components, styles, fonts });
